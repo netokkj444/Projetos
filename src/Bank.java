@@ -22,7 +22,7 @@ public class Bank {
 
         JOptionPane.showMessageDialog(null, "Bem vindo ao Banco de Deus!");
         String confirm = JOptionPane.showInputDialog(null, "Deseja realizar o cadastro? S/N");
-        //falta algumas coisas para aprimorar!
+        //falta algumas coisas para aprimorar!)
         if (confirm.equals("S")) {
             JOptionPane.showMessageDialog(null, "Vamos iniciar o seu cadastro!");
             name = JOptionPane.showInputDialog(null, "Digite seu nome: ");
@@ -50,7 +50,7 @@ public class Bank {
                 switch (invest) {
                     case 1:
                         valordoInvest = Double.parseDouble(JOptionPane.showInputDialog(null, "Você se" +
-                                "ciou POUPANÇA" +
+                                "lecin0ou POUPANÇA" +
                                 "\nDigite o valor que você deseja investir: "));
                         tempo = Integer.parseInt(JOptionPane.showInputDialog(null, "Pretende deixar por quantos " +
                                 "meses? "));

@@ -28,6 +28,7 @@ public class BankOperations {
 
     public int getYear() {
         return 2024 - year;
+
     }
 
     public double getSaldo() {
@@ -39,8 +40,7 @@ public class BankOperations {
     }
 
     public double getInvestPoupanca() {
-        return invest*tempoInvest*0.005141 + deposito;
-//oka
+        return  invest + invest*tempoInvest*0.005141;
     }
 
 
