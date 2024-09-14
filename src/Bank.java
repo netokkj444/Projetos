@@ -22,7 +22,7 @@ public class Bank {
 
         JOptionPane.showMessageDialog(null, "Bem vindo ao Banco de Deus!");
         String confirm = JOptionPane.showInputDialog(null, "Deseja realizar o cadastro? S/N");
-
+        //falta algumas coisas para aprimorar!
         if (confirm.equals("S")) {
             JOptionPane.showMessageDialog(null, "Vamos iniciar o seu cadastro!");
             name = JOptionPane.showInputDialog(null, "Digite seu nome: ");
