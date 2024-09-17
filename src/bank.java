@@ -1,9 +1,9 @@
-import Objects.BankOperations;
+import Objects.bankOperations;
 import java.util.Locale;
 import java.util.Scanner;
 import javax.swing.*;
 
-public class Bank {
+public class bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Locale.setDefault(Locale.US);
@@ -11,14 +11,13 @@ public class Bank {
         int data = 0;
         String dep;
         //Olá
-        //tenho que usar + vetores
         float deposito = 0;
         String confirmSaque;
         float saque = 0;
         int invest = 0;
         double valordoInvest = 0;
         double tempo = 0;
-
+        String tp = "";
 
         JOptionPane.showMessageDialog(null, "Bem vindo ao Banco de Deus!");
         String confirm = JOptionPane.showInputDialog(null, "Deseja realizar o cadastro? S/N");
@@ -50,13 +49,14 @@ public class Bank {
                 switch (invest) {
                     case 1:
                         valordoInvest = Double.parseDouble(JOptionPane.showInputDialog(null, "Você se" +
-                                "lecin0ou POUPANÇA" +
+                                "lecinou POUPANÇA" +
                                 "\nDigite o valor que você deseja investir: "));
                         tempo = Integer.parseInt(JOptionPane.showInputDialog(null, "Pretende deixar por quantos " +
                                 "meses? "));
-                        BankOperations showinvest = new BankOperations(valordoInvest);
-                        JOptionPane.showMessageDialog(null,"O resultado do seu investimento foi: "  +
-                                "\n"+showinvest.getInvestPoupanca());
+                        bankOperations showinvest = new bankOperations(valordoInvest);
+                        //tentei mudar aqui para mostrar o valor da poupança ,mas não consegui
+                        JOptionPane.showMessageDialog(null, "O resultado do investimento foi: " + showinvest.getInvest());
+
                         break;
                     case 2:
                         JOptionPane.showMessageDialog(null, "OBS: O RESULTADO DO INVESTIMENTO SÓ PODERA SER RETIRADO EM 2027!");
@@ -73,7 +73,7 @@ public class Bank {
 
                 }
             }
-            BankOperations things = new BankOperations(name, data, deposito, saque, valordoInvest, tempo);
+            bankOperations things = new bankOperations(name, data, deposito, saque, valordoInvest, tempo);
             JOptionPane.showMessageDialog(null, things);
         } else {
             JOptionPane.showMessageDialog(null, "Que pena que não quiz se juntar a nós volte sempre!");

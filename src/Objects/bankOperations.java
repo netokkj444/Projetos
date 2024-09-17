@@ -1,6 +1,6 @@
 package Objects;
 
-public class BankOperations {
+public class bankOperations {
     private String name;
     private int year;
     private final double deposito;
@@ -9,7 +9,7 @@ public class BankOperations {
     private double tempoInvest;
 
 
-    public BankOperations(String name, int year, double deposito, double saque, double invest,double tempoInvest){
+    public bankOperations(String name, int year, double deposito, double saque, double invest,double tempoInvest){
         this.name = name;
         this.year = year;
         this.deposito = deposito;
@@ -18,7 +18,7 @@ public class BankOperations {
         this.tempoInvest = tempoInvest;
     }
 
-    public BankOperations(double deposito) {
+    public bankOperations(double deposito) {
         this.deposito = deposito;
     }
 
@@ -39,9 +39,10 @@ public class BankOperations {
         return invest*2*0.1146;
     }
 
-    public double getInvestPoupanca() {
-        return  invest + invest*tempoInvest*0.005141;
-    }
+   public double getInvest(){
+        double i = invest + invest*tempoInvest*0.005141;
+        return i;
+   }
 
 
     public String toString(){
