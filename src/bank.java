@@ -1,4 +1,11 @@
 import Objects.BankOperation;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 import javax.swing.*;
@@ -6,6 +13,8 @@ import javax.swing.*;
 public class bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Date dataHoraAtual = new Date();
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
         Locale.setDefault(Locale.US);
         String name = "";
         int date = 0;
@@ -17,12 +26,14 @@ public class bank {
         double valueofInvest = 0;
         int time = 0;
         String tp = "";
+        LocalDate p = LocalDate.now();
 
         JOptionPane.showMessageDialog(null, "Bem vindo ao Banco de Deus!");
-        String confirm = JOptionPane.showInputDialog(null, "Deseja realizar o cadastro? S/N");
+        String confirm = JOptionPane.showInputDialog(null, "Deseja realizar o cadastro? S/N" +
+                "");
         //falta algumas coisas para aprimorar!)
         if (confirm.equals("S")) {
-            JOptionPane.showMessageDialog(null, "Vamos iniciar o seu cadastro!");
+            JOptionPane.showMessageDialog(null, "Vamos iniciar o seu cadastro!" + "\n       " + p);
             name = JOptionPane.showInputDialog(null, "Digite seu nome: ");
             date = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o ano que você nasceu: "));
             dep = JOptionPane.showInputDialog(null, "Deseja fazer um depósito inicial? S/N");
@@ -72,8 +83,13 @@ public class bank {
                         JOptionPane.showMessageDialog(null,"[ERROR] OPÇÃO NÃO EXISTE");
 
                 }
+
             }
-            BankOperation things = new BankOperation(name, date, deposit, withdraw, valueofInvest, time);
+           String bankstatement = String.valueOf(JOptionPane.showConfirmDialog(null, "Do you want request your bank statement?" ));
+            if (bankstatement.equals("S")){
+
+            }
+            BankOperation things = new BankOperation(name, date, deposit, withdraw, valueofInvest, time,bankstatement);
             JOptionPane.showMessageDialog(null, things);
         } else {
             JOptionPane.showMessageDialog(null, "Que pena que não quiz se juntar a nós volte sempre!");

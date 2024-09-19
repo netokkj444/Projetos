@@ -7,18 +7,20 @@ public class BankOperation {
     private double withdraw;
     private double invest;
     private double timeInvest;
+    private String bankstatement;
 
     public BankOperation() {
 
     }
 
-    public BankOperation(String name, int year, double deposit, double saque, double invest, double tempoInvest) {
+    public BankOperation(String name, int year, double deposit, double saque, double invest, double tempoInvest,String bankstatement) {
         this.name = name;
         this.year = year;
         this.deposit = deposit;
         this.withdraw = saque;
         this.invest = invest;
         this.timeInvest = tempoInvest;
+        this.bankstatement = bankstatement;
     }
 
     public BankOperation(double invest, double timeInvest) {
@@ -37,7 +39,6 @@ public class BankOperation {
 
     public int getYear() {
         return 2024 - year;
-
     }
 
     public double getBalance() {
