@@ -64,8 +64,8 @@ public class bank {
                                 "\nDigite o valor que você deseja investir: "));
                         time = Integer.parseInt(JOptionPane.showInputDialog(null, "Pretende deixar por quantos " +
                                 "meses? "));
-                        BankOperation showinvest = new BankOperation(valueofInvest);
-                        //tentei mudar aqui para mostrar o valor da poupança ,mas não consegui
+                        BankOperation showinvest = new BankOperation(valueofInvest,time);
+                       //Valor da poupança Ok!
                         JOptionPane.showMessageDialog(null, "O resultado do investimento foi: " + showinvest.getInvest());
 
                         break;
@@ -85,12 +85,13 @@ public class bank {
                 }
 
             }
-           String bankstatement = String.valueOf(JOptionPane.showConfirmDialog(null, "Do you want request your bank statement?" ));
-            if (bankstatement.equals("S")){
-
+            BankOperation things = new BankOperation(name, date, deposit, withdraw, valueofInvest, time);
+            String extratc = String.valueOf(JOptionPane.showConfirmDialog(null,"Você quer emitir seu extrato? "));
+            if (extratc != null){
+                JOptionPane.showMessageDialog(null,things.toString());
+            }else {
+                JOptionPane.showMessageDialog(null,"Seu cadastro foi finalizado! Ficamos agradecidos pela sua preferência!");
             }
-            BankOperation things = new BankOperation(name, date, deposit, withdraw, valueofInvest, time,bankstatement);
-            JOptionPane.showMessageDialog(null, things);
         } else {
             JOptionPane.showMessageDialog(null, "Que pena que não quiz se juntar a nós volte sempre!");
         }
