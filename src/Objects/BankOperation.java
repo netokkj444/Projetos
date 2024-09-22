@@ -9,37 +9,38 @@ public class BankOperation {
     private int year;
     private double deposit = 0;
     private double withdraw;
-    private double invest;
+    private double investPoup;
+    private double investTea;
+    private double investSelic;
     private double timeInvest;
-    private String bankstatement;
+    private final double selicTax = 10.8916;
+
     Date dataeHr = new Date();
     String hr = new SimpleDateFormat("HH:mm:ss").format(dataeHr);
     LocalDate date = LocalDate.now();
 
-    public BankOperation(String bankstatement) {
-        this.bankstatement = bankstatement;
-    }
 
-    public BankOperation(String name, int year, double deposit, double saque, double invest, double tempoInvest) {
+    public BankOperation(String name, int year, double deposit, double withdraw,double selicInvest) {
         this.name = name;
         this.year = year;
         this.deposit = deposit;
-        this.withdraw = saque;
-        this.invest = invest;
-        this.timeInvest = tempoInvest;
+        this.withdraw = withdraw;
+        this.investSelic  = selicInvest;
     }
 
-    public BankOperation(double invest, double timeInvest) {
-        this.invest = invest;
+
+
+    public BankOperation(double investPoup, double timeInvest) {
+        this.investPoup = investPoup;
         this.timeInvest = timeInvest;
     }
 
 
-    public BankOperation(double deposit) {
-        this.deposit = deposit;
+    public BankOperation(double valueofInvestTrea) {
+        this.investTea = valueofInvestTrea;
     }
 
-    public void setName(){
+    public void setName() {
         this.name = name;
     }
 
@@ -55,38 +56,35 @@ public class BankOperation {
         return deposit - withdraw;
     }
 
-    public double getInvestTreasure() {
-        return invest * 2 * 0.1146;
+    public void setInvestTea(double investTeasure) {
+        this.investTea = investTeasure;
     }
 
-    public double getInvest() {
-        double i = invest + invest * timeInvest * 0.005141;
+    public double getInvestTreasure() {
+        return investTea + investTea * 2 * 0.1146 * 3;
+    }
+
+    public double getInvestSavigins() {
+        double i = investPoup + investPoup * timeInvest * 0.005141;
         String.format("%.2f%n", i);
         return i;
     }
 
-    public void setBankstatement(String bankstatement) {
-        this.bankstatement = bankstatement;
+    public double getSelicTax() {
+        return selicTax * investSelic * 3 + investSelic;
     }
 
-    public String getBankstatementxtract() {
-       return "<html> EXTRATO BANCÁRIO " +
-                "<br>NOME: " + name +
-                "<br>SALDO: " + getBalance()+
-                "<br>SAQUE: " + withdraw+
-                "<br>             " + dataeHr +
-                "</html>";
 
-    }
 
 
     public String toString() {
-        return "<html>Dados:" +
+        return "<html>            EXTRATO          " +
+                "<br>DADOS:" +
                 "<br>Nome: " + getName() +
-                "<br>Saldo atual: " + getBalance() +
-                "<br>Saque: " + withdraw +
-                "<br>Horário:                                     " + hr +
-                "<br>Data:                                         " + date +
+                "<br>Saldo atual: " + "R$" + String.format("%.2f%n",getBalance()) +
+                "<br>Saque: " + "R$" + String.format("%.2f%n",withdraw) +
+                "<br>              Horário: " + hr +
+                "<br>              Data:    " + date +
                 "</html>";
     }
 }
