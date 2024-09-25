@@ -6,6 +6,8 @@ import java.util.Locale;
 import java.util.Scanner;
 import javax.swing.*;
 
+// mudar opções após o cadastro fazer que nem os tipos de investimento
+//mudar essencialmente se o usuário nao quiser fazer o deposito logo nao precisa fazer o saque
 public class Bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -56,19 +58,20 @@ public class Bank {
             dep = JOptionPane.showInputDialog(null, "Do you want to make an initial deposit? Y/N");
 
             if (dep.equals("Y")) {
-                deposit = Float.parseFloat(JOptionPane.showInputDialog(null, "Enter the deposit amount:: "));
+                deposit = Float.parseFloat(JOptionPane.showInputDialog(null, "Enter the deposit amount: "));
+
+                confirmWithdraw = JOptionPane.showInputDialog(null, "Do you want to make any withdrawals? Y/N");
+
+                if (confirmWithdraw.equals("Y")) {
+                    do {
+                        withdraw = Float.parseFloat(JOptionPane.showInputDialog(null, "Balance: $" + deposit + "\nEnter the value of your " +
+                                "loot: "));
+                        if (withdraw > deposit) {
+                            JOptionPane.showMessageDialog(null, "Invalid withdraw!");
+                        }
+                    } while (deposit < withdraw);
+                }
             }
-
-            confirmWithdraw = JOptionPane.showInputDialog(null, "Do you want to make any withdrawals? Y/N");
-
-            if (confirmWithdraw.equals("Y")) {
-                do {
-                    withdraw = Float.parseFloat(JOptionPane.showInputDialog(null, "Balance: $" + deposit + "\nEnter the value of your " +
-                    "loot: "));
-                    if (withdraw > deposit) {
-                        JOptionPane.showMessageDialog(null, "Invalid withdraw!");
-                    }
-                } while (deposit < withdraw);
 
                 String confirmInvest = JOptionPane.showInputDialog(null, "Do you want to enter the investment field? Y/N");
                 if (confirmInvest.equals("Y")) {
@@ -83,7 +86,7 @@ public class Bank {
                                     "selected SAVINGS" +
                                     "\nEnter the amount you want to invest: "));
                             timeofInvest = Integer.parseInt(JOptionPane.showInputDialog(null, "How long do you intend to leave it for?" +
-                            "months?"));
+                                    "months?"));
                             //Valor da poupança Ok!
                             BankOperation showinvestPoup = new BankOperation(valueofInvest, timeofInvest);
                             JOptionPane.showMessageDialog(null, "The result of the investment was: " + String.format("%.2f%n", showinvestPoup.getInvestSavigins()));
@@ -117,11 +120,12 @@ public class Bank {
                     JOptionPane.showMessageDialog(null, things.toString());
                 }
                 JOptionPane.showMessageDialog(null, "Your registration has been completed!   Thank you for your preference!");
-            } else {
-                JOptionPane.showMessageDialog(null, "What a shame you didn't want to join us, come back soon!");
-            }
 
-            sc.close();
+        } else {
+            JOptionPane.showMessageDialog(null, "What a shame you didn't want to join us, come back soon!");
         }
+
+        sc.close();
+
     }
 }

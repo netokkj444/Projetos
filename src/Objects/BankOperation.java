@@ -20,15 +20,13 @@ public class BankOperation {
     LocalDate date = LocalDate.now();
 
 
-    public BankOperation(String name, int year, double deposit, double withdraw,double selicInvest) {
+    public BankOperation(String name, int year, double deposit, double withdraw,double investSelic) {
         this.name = name;
         this.year = year;
         this.deposit = deposit;
         this.withdraw = withdraw;
-        this.investSelic  = selicInvest;
+        this.investSelic = investSelic;
     }
-
-
 
     public BankOperation(double investPoup, double timeInvest) {
         this.investPoup = investPoup;
@@ -42,6 +40,10 @@ public class BankOperation {
 
     public void setName() {
         this.name = name;
+    }
+
+    public void setInvestSelic(){
+        this.investSelic = investSelic;
     }
 
     public String getName() {
@@ -60,6 +62,10 @@ public class BankOperation {
         this.investTea = investTeasure;
     }
 
+    public void setInvestSelic(double investSelic){
+        this.investSelic = investSelic;
+    }
+
     public double getInvestTreasure() {
         return investTea + investTea * 2 * 0.1146 * 3;
     }
@@ -75,16 +81,14 @@ public class BankOperation {
     }
 
 
-
-
     public String toString() {
-        return "<html>            EXTRATO          " +
-                "<br>DADOS:" +
-                "<br>Nome: " + getName() +
-                "<br>Saldo atual: " + "R$" + String.format("%.2f%n",getBalance()) +
-                "<br>Saque: " + "R$" + String.format("%.2f%n",withdraw) +
-                "<br>              Horário: " + hr +
-                "<br>              Data:    " + date +
+        return "<html>           EXTRACT         " +
+                "<br>DATA:" +
+                "<br>NAME: " + getName() +
+                "<br>CURRENT BALANCE: " + "R$" +  getBalance() +
+                "<br>WITHDRAW: " + "R$" + String.format("%.2f%n", withdraw) +
+                "<br>              TIME: " + hr +
+                "<br>              DATE:    " + date +
                 "</html>";
     }
 }
