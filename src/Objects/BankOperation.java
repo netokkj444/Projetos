@@ -15,17 +15,16 @@ public class BankOperation {
     private double timeInvest;
     private final double selicTax = 10.8916;
 
-    Date dataeHr = new Date();
-    String hr = new SimpleDateFormat("HH:mm:ss").format(dataeHr);
+    Date dateHour = new Date();
+    String hour = new SimpleDateFormat("HH:mm:ss").format(dateHour);
     LocalDate date = LocalDate.now();
 
 
-    public BankOperation(String name, int year, double deposit, double withdraw,double investSelic) {
+    public BankOperation(String name, int year, double deposit, double withdraw) {
         this.name = name;
         this.year = year;
         this.deposit = deposit;
         this.withdraw = withdraw;
-        this.investSelic = investSelic;
     }
 
     public BankOperation(double investPoup, double timeInvest) {
@@ -42,7 +41,7 @@ public class BankOperation {
         this.name = name;
     }
 
-    public void setInvestSelic(){
+    public void setInvestSelic() {
         this.investSelic = investSelic;
     }
 
@@ -62,7 +61,7 @@ public class BankOperation {
         this.investTea = investTeasure;
     }
 
-    public void setInvestSelic(double investSelic){
+    public void setInvestSelic(double investSelic) {
         this.investSelic = investSelic;
     }
 
@@ -85,9 +84,9 @@ public class BankOperation {
         return "<html>           EXTRACT         " +
                 "<br>DATA:" +
                 "<br>NAME: " + getName() +
-                "<br>CURRENT BALANCE: " + "R$" +  getBalance() +
+                "<br>CURRENT BALANCE: " + "R$" + String.format("%.2f%n", getBalance()) +
                 "<br>WITHDRAW: " + "R$" + String.format("%.2f%n", withdraw) +
-                "<br>              TIME: " + hr +
+                "<br>              TIME: " + hour +
                 "<br>              DATE:    " + date +
                 "</html>";
     }

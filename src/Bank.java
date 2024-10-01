@@ -31,7 +31,6 @@ public class Bank {
 
         JOptionPane.showMessageDialog(null, "Welcome to Bank of Holy Mary!");
         String confirm = JOptionPane.showInputDialog(null, "Do you want to register? Y/N");
-        //falta algumas coisas para aprimorar!)
         if (confirm.equals("Y")) {
             JOptionPane.showMessageDialog(null, "Let's start your registration!");
             name = JOptionPane.showInputDialog(null, "What's your name? ");
@@ -73,54 +72,53 @@ public class Bank {
                 }
             }
 
-                String confirmInvest = JOptionPane.showInputDialog(null, "Do you want to enter the investment field? Y/N");
-                if (confirmInvest.equals("Y")) {
-                    invest = Integer.parseInt(JOptionPane.showInputDialog(null, "We have the following investments" +
-                            "\n1°.Savings" +
-                            "\n2°.Treasury direct" +
-                            "\n3°. Selic rate"));
-                    switch (invest) {
+            String confirmInvest = JOptionPane.showInputDialog(null, "Do you want to enter the investment field? Y/N");
+            if (confirmInvest.equals("Y")) {
+                invest = Integer.parseInt(JOptionPane.showInputDialog(null, "We have the following investments" +
+                        "\n1°.Savings" +
+                        "\n2°.Treasury direct" +
+                        "\n3°. Selic rate"));
+                switch (invest) {
 
-                        case 1:
-                            valueofInvest = Double.parseDouble(JOptionPane.showInputDialog(null, "You if" +
-                                    "selected SAVINGS" +
-                                    "\nEnter the amount you want to invest: "));
-                            timeofInvest = Integer.parseInt(JOptionPane.showInputDialog(null, "How long do you intend to leave it for?" +
-                                    "months?"));
-                            //Valor da poupança Ok!
-                            BankOperation showinvestPoup = new BankOperation(valueofInvest, timeofInvest);
-                            JOptionPane.showMessageDialog(null, "The result of the investment was: " + String.format("%.2f%n", showinvestPoup.getInvestSavigins()));
+                    case 1:
+                        valueofInvest = Double.parseDouble(JOptionPane.showInputDialog(null, "You if" +
+                                "selected SAVINGS" +
+                                "\nEnter the amount you want to invest: "));
+                        timeofInvest = Integer.parseInt(JOptionPane.showInputDialog(null, "How long do you intend to leave it for?" +
+                                "months?"));
+                        //Valor da poupança Ok!
+                        BankOperation showinvestPoup = new BankOperation(valueofInvest, timeofInvest);
+                        JOptionPane.showMessageDialog(null, "The result of the investment was: " + String.format("%.2f%n", showinvestPoup.getInvestSavigins()));
 
-                            break;
-                        case 2:
-                            JOptionPane.showMessageDialog(null, "NOTE: THE RESULTS OF THE INVESTMENT CAN ONLY BE WITHDRAWN IN 2027!");
-                            valueofInvestTrea = Double.parseDouble(JOptionPane.showInputDialog(null, "Você selecionou " +
-                                    "TREASURE DIRECT how much do you want to invest? "));
-                            BankOperation showinvestTreasure = new BankOperation(valueofInvestTrea);
-                            JOptionPane.showMessageDialog(null, "The result of investiment was: " + showinvestTreasure.getInvestTreasure());
-                            break;
-                        case 3:
-                            JOptionPane.showMessageDialog(null, "NOTE: YOU CAN ONLY WITHDRAW YOUR MONEY AFTER 3 YEARS!");
-                            valueofInvestSelic = Double.parseDouble(JOptionPane.showInputDialog(null, "You selected SELIC TAX" +
-                                    "how much do you want to invest? "));
-                            BankOperation showinvestSelic = new BankOperation(valueofInvestSelic);
+                        break;
+                    case 2:
+                        JOptionPane.showMessageDialog(null, "NOTE: THE RESULTS OF THE INVESTMENT CAN ONLY BE WITHDRAWN IN 2027!");
+                        valueofInvestTrea = Double.parseDouble(JOptionPane.showInputDialog(null, "Você selecionou " +
+                                "TREASURE DIRECT how much do you want to invest? "));
+                        BankOperation showinvestTreasure = new BankOperation(valueofInvestTrea);
+                        JOptionPane.showMessageDialog(null, "The result of investiment was: " + showinvestTreasure.getInvestTreasure());
+                        break;
+                    case 3:
+                        JOptionPane.showMessageDialog(null, "NOTE: YOU CAN ONLY WITHDRAW YOUR MONEY AFTER 3 YEARS!");
+                        valueofInvestSelic = Double.parseDouble(JOptionPane.showInputDialog(null, "You selected SELIC TAX" +
+                                "how much do you want to invest? "));
+                        BankOperation showinvestSelic = new BankOperation(valueofInvestSelic);
+                        JOptionPane.showMessageDialog(null, "The result of investiment was: " + showinvestSelic.getSelicTax());
 
-                            JOptionPane.showMessageDialog(null, "The result of investiment was: " + showinvestSelic.getSelicTax());
-
-                            break;
-                        default:
-                            JOptionPane.showMessageDialog(null, "[ERROR] OPTION NO EXISTS");
-
-                    }
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "[ERROR] OPTION NO EXISTS");
 
                 }
-                BankOperation things = new BankOperation(name, date, deposit, withdraw, valueofInvestSelic);
-                String extratc = String.valueOf(JOptionPane.showConfirmDialog(null, "Do you want to issue your statement? "));
-                if (extratc != null) {
-                    JOptionPane.showMessageDialog(null, things.toString());
-                }
-                JOptionPane.showMessageDialog(null, "Your registration has been completed!   Thank you for your preference!");
 
+            }
+            BankOperation showinvestSelic = new BankOperation(valueofInvestSelic);
+            BankOperation things = new BankOperation(name, date, deposit, withdraw);
+            String extratc = String.valueOf(JOptionPane.showInputDialog(null, "Do you want to issue your statement? Y/N"));
+            if (extratc.equals("Y")) {
+                JOptionPane.showMessageDialog(null, things.toString());
+            }
+            JOptionPane.showMessageDialog(null, "Your registration has been completed!   Thank you for your preference!");
         } else {
             JOptionPane.showMessageDialog(null, "What a shame you didn't want to join us, come back soon!");
         }
