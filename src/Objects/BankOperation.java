@@ -2,22 +2,27 @@ package Objects;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 public class BankOperation {
     private String name;
     private int year;
     private double deposit = 0;
     private double withdraw;
-    private double investPoup;
+    private double investSav;
     private double investTea;
     private double investSelic;
     private double timeInvest;
     private final double selicTax = 10.8916;
 
-    Date dateHour = new Date();
-    String hour = new SimpleDateFormat("HH:mm:ss").format(dateHour);
-    LocalDate date = LocalDate.now();
+    LocalDate X1 = LocalDate.now();
+    int X = Integer.parseInt(String.valueOf(X1.getYear()));
+    DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("HH:mm:ss");
+    LocalDateTime x2 = LocalDateTime.now();
+    String p = fmt1.format(x2);
 
 
     public BankOperation(String name, int year, double deposit, double withdraw) {
@@ -27,22 +32,13 @@ public class BankOperation {
         this.withdraw = withdraw;
     }
 
-    public BankOperation(double investPoup, double timeInvest) {
-        this.investPoup = investPoup;
+    public BankOperation(double investSav, double timeInvest) {
+        this.investSav = investSav;
         this.timeInvest = timeInvest;
     }
 
-
     public BankOperation(double valueofInvestTrea) {
         this.investTea = valueofInvestTrea;
-    }
-
-    public void setName() {
-        this.name = name;
-    }
-
-    public void setInvestSelic() {
-        this.investSelic = investSelic;
     }
 
     public String getName() {
@@ -50,19 +46,11 @@ public class BankOperation {
     }
 
     public int getYear() {
-        return 2024 - year;
+        return X - year;
     }
 
     public double getBalance() {
         return deposit - withdraw;
-    }
-
-    public void setInvestTea(double investTeasure) {
-        this.investTea = investTeasure;
-    }
-
-    public void setInvestSelic(double investSelic) {
-        this.investSelic = investSelic;
     }
 
     public double getInvestTreasure() {
@@ -70,7 +58,7 @@ public class BankOperation {
     }
 
     public double getInvestSavigins() {
-        double i = investPoup + investPoup * timeInvest * 0.005141;
+        double i = investSav + investSav * timeInvest * 0.005141;
         String.format("%.2f%n", i);
         return i;
     }
@@ -86,8 +74,8 @@ public class BankOperation {
                 "<br>NAME: " + getName() +
                 "<br>CURRENT BALANCE: " + "R$" + String.format("%.2f%n", getBalance()) +
                 "<br>WITHDRAW: " + "R$" + String.format("%.2f%n", withdraw) +
-                "<br>              TIME: " + hour +
-                "<br>              DATE:    " + date +
+                "<br>              TIME: " + p +
+                "<br>              DATE:    " + X1+
                 "</html>";
     }
 }
