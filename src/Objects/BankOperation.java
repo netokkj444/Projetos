@@ -14,9 +14,9 @@ public class BankOperation {
     private double withdraw;
     private double investSav;
     private double investTea;
-    private double investSelic;
+    private float Selic;
     private double timeInvest;
-    private final double selicTax = 10.8916;
+    private final double selicTax = 10.8916/100;
 
     LocalDate X1 = LocalDate.now();
     int X = Integer.parseInt(String.valueOf(X1.getYear()));
@@ -41,12 +41,16 @@ public class BankOperation {
         this.investTea = valueofInvestTrea;
     }
 
-    public String getName() {
-        return name;
+    public BankOperation(float valueSelic){
+        this.Selic = valueSelic;
     }
 
-    public int getYear() {
-        return X - year;
+    public double getSelic() {
+        return Selic;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double getBalance() {
@@ -63,10 +67,14 @@ public class BankOperation {
         return i;
     }
 
-    public double getSelicTax() {
-        return selicTax * investSelic * 3 + investSelic;
+    public void setSelic(float selic) {
+        Selic = selic;
     }
 
+    public float getInvestSelic(){
+        float sel = (float) (selicTax * Selic *3 + Selic);
+        return sel;
+    }
 
     public String toString() {
         return "<html>           EXTRACT         " +

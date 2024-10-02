@@ -99,12 +99,10 @@ public class Bank {
                         JOptionPane.showMessageDialog(null, "The result of investiment was: " + showinvestTreasure.getInvestTreasure());
                         break;
                     case 3:
-                        JOptionPane.showMessageDialog(null, "NOTE: YOU CAN ONLY WITHDRAW YOUR MONEY AFTER 3 YEARS!");
-                        valueofInvestSelic = Double.parseDouble(JOptionPane.showInputDialog(null, "You selected SELIC TAX" +
-                                "how much do you want to invest? "));
-                        BankOperation showinvestSelic = new BankOperation(valueofInvestSelic);
-                        JOptionPane.showMessageDialog(null, "The result of investiment was: " + showinvestSelic.getSelicTax());
-
+                        JOptionPane.showMessageDialog(null, "NOTE: THE RESULT OF THE INVESTIMENT CAN ONLY WITHTDRAWN IN 2027!");
+                        float valueSelic = Float.parseFloat(JOptionPane.showInputDialog(null,"Enter the amount you want to invest:"));
+                        BankOperation selic = new BankOperation(valueSelic);
+                        JOptionPane.showMessageDialog(null,"The result: " + String.format("%.2f%n",selic.getInvestSelic()));
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "[ERROR] OPTION NO EXISTS");
@@ -112,7 +110,6 @@ public class Bank {
                 }
 
             }
-            BankOperation showinvestSelic = new BankOperation(valueofInvestSelic);
             BankOperation things = new BankOperation(name, date, deposit, withdraw);
             String extratc = String.valueOf(JOptionPane.showInputDialog(null, "Do you want to issue your statement? Y/N"));
             if (extratc.equals("Y")) {
