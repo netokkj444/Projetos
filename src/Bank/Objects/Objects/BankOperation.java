@@ -1,22 +1,18 @@
-package Objects;
+package Bank.Objects.Objects;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
 
 public class BankOperation {
-    private String name;
-    private int year;
-    private double deposit = 0;
+
+    private float deposit = 0;
     private double withdraw;
     private double investSav;
     private double investTea;
     private float Selic;
     private double timeInvest;
-    private final double selicTax = 10.8916/100;
+    private final double selicTax = 10.8916 / 100;
 
     LocalDate X1 = LocalDate.now();
     int X = Integer.parseInt(String.valueOf(X1.getYear()));
@@ -25,12 +21,11 @@ public class BankOperation {
     String p = fmt1.format(x2);
 
 
-    public BankOperation(String name, int year, double deposit, double withdraw) {
-        this.name = name;
-        this.year = year;
+    public BankOperation(float deposit, double withdraw) {
         this.deposit = deposit;
         this.withdraw = withdraw;
     }
+
 
     public BankOperation(double investSav, double timeInvest) {
         this.investSav = investSav;
@@ -41,16 +36,12 @@ public class BankOperation {
         this.investTea = valueofInvestTrea;
     }
 
-    public BankOperation(float valueSelic){
+    public BankOperation(float valueSelic) {
         this.Selic = valueSelic;
     }
 
     public double getSelic() {
         return Selic;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public double getBalance() {
@@ -71,19 +62,8 @@ public class BankOperation {
         Selic = selic;
     }
 
-    public float getInvestSelic(){
-        float sel = (float) (selicTax * Selic *3 + Selic);
+    public float getInvestSelic() {
+        float sel = (float) (selicTax * Selic * 3 + Selic);
         return sel;
-    }
-
-    public String toString() {
-        return "<html>           EXTRACT         " +
-                "<br>DATA:" +
-                "<br>NAME: " + getName() +
-                "<br>CURRENT BALANCE: " + "R$" + String.format("%.2f%n", getBalance()) +
-                "<br>WITHDRAW: " + "R$" + String.format("%.2f%n", withdraw) +
-                "<br>              TIME: " + p +
-                "<br>              DATE:    " + X1+
-                "</html>";
     }
 }

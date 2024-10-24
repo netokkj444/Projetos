@@ -1,18 +1,19 @@
-import Objects.BankOperation;
+package Bank.Objects;
+
+import Bank.Objects.Objects.BankOperation;
+import Bank.Objects.Objects.InformationsbyBank;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 import javax.swing.*;
 
-// mudar opções após o cadastro fazer que nem os tipos de investimento
-//mudar essencialmente se o usuário nao quiser fazer o deposito logo nao precisa fazer o saque
 public class Bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Random numberAccout = new Random();
         SimpleDateFormat date02 = new SimpleDateFormat("yyyy");
         Date dataHoraAtual = new Date();
+        List<BankOperation> list = new ArrayList<>();
         String currentyear = date02.format(dataHoraAtual);
         int lowdate = Integer.parseInt(String.valueOf(currentyear));
         int age;
@@ -26,17 +27,24 @@ public class Bank {
         double valueofInvest = 0;
         int timeofInvest = 0;
         String tp = "";
-        double valueofInvestSelic = 0;
         double valueofInvestTrea = 0;
+        int numberofAccount = numberAccout.nextInt(1000,5000);
 
         JOptionPane.showMessageDialog(null, "Welcome to Bank of Holy Mary!");
         String confirm = JOptionPane.showInputDialog(null, "Do you want to register? Y/N");
         if (confirm.equals("Y")) {
+            String bussines = JOptionPane.showInputDialog(null, "Do you want open Bussines Account?");
+            if (bussines.equals("Y")) {
+                JOptionPane.showMessageDialog(null, "Let's start your registration!");
+
+            }
             JOptionPane.showMessageDialog(null, "Let's start your registration!");
-            name = JOptionPane.showInputDialog(null, "What's your name? ");
             do {
-                //Verificação de idade caso se for um "intruso"
-                ;
+                name = JOptionPane.showInputDialog(null, "What's your name? ");
+            } while (name.length() > 5);
+
+            do {
+                //Verificação de idade caso se for uma idade não adequada
                 date = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the year you were born: "));
                 age = lowdate - date;
                 if (date >= lowdate) {
@@ -53,6 +61,7 @@ public class Bank {
                             "<br>Reason: NOT ENOUGH AGE" +
                             "</html>");
                 }
+
             } while (date >= lowdate || age < 16 || date < 1910);
             dep = JOptionPane.showInputDialog(null, "Do you want to make an initial deposit? Y/N");
 
@@ -71,7 +80,6 @@ public class Bank {
                     } while (deposit < withdraw);
                 }
             }
-
             String confirmInvest = JOptionPane.showInputDialog(null, "Do you want to enter the investment field? Y/N");
             if (confirmInvest.equals("Y")) {
                 invest = Integer.parseInt(JOptionPane.showInputDialog(null, "We have the following investments" +
@@ -100,9 +108,9 @@ public class Bank {
                         break;
                     case 3:
                         JOptionPane.showMessageDialog(null, "NOTE: THE RESULT OF THE INVESTIMENT CAN ONLY WITHTDRAWN IN 2027!");
-                        float valueSelic = Float.parseFloat(JOptionPane.showInputDialog(null,"Enter the amount you want to invest:"));
+                        float valueSelic = Float.parseFloat(JOptionPane.showInputDialog(null, "Enter the amount you want to invest:"));
                         BankOperation selic = new BankOperation(valueSelic);
-                        JOptionPane.showMessageDialog(null,"The result: " + String.format("%.2f%n",selic.getInvestSelic()));
+                        JOptionPane.showMessageDialog(null, "The result: " + String.format("%.2f%n", selic.getInvestSelic()));
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "[ERROR] OPTION NO EXISTS");
@@ -110,10 +118,11 @@ public class Bank {
                 }
 
             }
-            BankOperation things = new BankOperation(name, date, deposit, withdraw);
+            list.add(new InformationsbyBank(name, withdraw, deposit, date,numberofAccount));
+            list.add(new BankOperation(deposit, withdraw));
             String extratc = String.valueOf(JOptionPane.showInputDialog(null, "Do you want to issue your statement? Y/N"));
             if (extratc.equals("Y")) {
-                JOptionPane.showMessageDialog(null, things.toString());
+
             }
             JOptionPane.showMessageDialog(null, "Your registration has been completed!   Thank you for your preference!");
         } else {
