@@ -10,7 +10,7 @@ public class BankOperation {
     private double withdraw;
     private double investSav;
     private double investTea;
-    private float Selic;
+    private float investSelic;
     private double timeInvest;
     private final double selicTax = 10.8916 / 100;
 
@@ -37,11 +37,7 @@ public class BankOperation {
     }
 
     public BankOperation(float valueSelic) {
-        this.Selic = valueSelic;
-    }
-
-    public double getSelic() {
-        return Selic;
+        this.investSelic = valueSelic;
     }
 
     public double getBalance() {
@@ -58,12 +54,8 @@ public class BankOperation {
         return i;
     }
 
-    public void setSelic(float selic) {
-        Selic = selic;
-    }
-
     public float getInvestSelic() {
-        float sel = (float) (selicTax * Selic * 3 + Selic);
+        float sel = (float) (selicTax * investSelic* 3 + investSelic);
         return sel;
     }
 }
