@@ -1,10 +1,10 @@
-package Bank.Objects.Objects;
+package BankProject.Entites;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class BankOperation {
+public class InformationBank {
 
     private float deposit = 0;
     private double withdraw;
@@ -21,22 +21,22 @@ public class BankOperation {
     String p = fmt1.format(x2);
 
 
-    public BankOperation(float deposit, double withdraw) {
+    public InformationBank(float deposit, double withdraw) {
         this.deposit = deposit;
         this.withdraw = withdraw;
     }
 
 
-    public BankOperation(double investSav, double timeInvest) {
+    public InformationBank(double investSav, double timeInvest) {
         this.investSav = investSav;
         this.timeInvest = timeInvest;
     }
 
-    public BankOperation(double valueofInvestTrea) {
+    public InformationBank(double valueofInvestTrea) {
         this.investTea = valueofInvestTrea;
     }
 
-    public BankOperation(float valueSelic) {
+    public InformationBank(float valueSelic) {
         this.investSelic = valueSelic;
     }
 
